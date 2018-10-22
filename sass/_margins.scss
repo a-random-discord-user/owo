@@ -1,0 +1,20 @@
+$margin-value: (0, 5, 10, 15, 20, 25, 30);
+
+@each $g in $margin-value {
+  // Bottom
+  .margin-bottom-#{$g} {
+    margin-bottom: #{$g}px;
+  }
+  // Top
+  .margin-top-#{$g} {
+    margin-top: #{$g}px;
+  }
+  // Left
+  .margin-left-#{$g} {
+    margin-left: #{$g}px;
+  }
+  // Right
+  .margin-right-#{$g} {
+    margin-right: #{$g}px;
+  }
+}

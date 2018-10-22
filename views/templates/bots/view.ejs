@@ -1,0 +1,112 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-2"><img class="img-circle" src="https://cdn.discordapp.com/avatars/<%= bot.id %>/<%= bot.avatar %>.png?size=256" alt="The image failed to load." onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';"></div>
+            <div class="column is-10">
+               <p class="title"><%= bot.name %> <% if (bot.verified == true) { %><img style="width: 35px; height: 35px" src="/img/verified.png" title="Verified Bot"><% } %></p> 
+
+               <p class="subtitle"><%= bot.short_desc %></p>
+               <div class="field is-grouped is-grouped-multiline">
+                   <% if (bot.approved == false) { %>
+                    <div class="control">
+                    <div class="tags has-addons">
+                            <span class="tag is-danger">Bot Unapproved</span>
+                     </div>
+                    </div>
+                    <% } %>
+                <div class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-dark">Prefix</span>
+                    <span class="tag is-info"><%= bot.prefix %></span>
+                  </div>
+                </div>
+                <div class="control">
+                  <div class="tags has-addons">
+                    <span class="tag is-dark">Library</span>
+                    <span class="tag is-success"><%= bot.library %></span>
+                  </div>
+                </div>
+                <% if (bot.server_count != 0) { %>
+                <div class="control"> 
+                    <div class="tags has-addons">
+                      <span class="tag is-dark">Servers</span>
+                      <span class="tag is-info"><%= bot.server_count.toLocaleString() %></span>
+                    </div>
+                  </div>
+                  <% } %>
+                  <div class="control">
+                    <div class="tags has-addons">
+                    <span class="tag is-dark">Owners</span>
+                    <span class="tag is-danger"> <% bot.ownerinfo.map((owner) => { %>
+                      <% if (owner) { %>
+                      <a href="/user/<%= owner.id %>"><%= owner.tag %> &nbsp;</a>
+                      <% } %>
+                      <% }) %>
+                    </span>
+                    </div>
+                    </div>  
+              </div>          
+              <a target="_blank" href="<%= bot.invite %>" class="button is-link">Invite</a>
+			   <% if (bot.github != '') { %>
+                <a target="_blank" href="<%= bot.github %>" class="button is-info">GitHub</a>
+              <% } %>
+              <% if (bot.support_server != '') { %>
+                <a target="_blank" href="<%= bot.support_server %>" class="button is-warning">Support Server</a>
+              <% } %>
+              <% if (user) { %>
+              <% if (user.id == bot.owner || user.mod || user.admin || bot.owners.includes(user.id)) { %>
+                <div class="dropdown is-hoverable">
+                  <div class="select dangerzone-select">
+                  <select onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                      <option disabled selected>Danger Zone</option>
+                      <option value="/bots/<%= bot.id %>/token">API Token</option>
+                      <option value="/bots/<%= bot.id %>/edit">Edit</option>
+                      <% if (user.id == bot.owner) { %>
+                      <option value="/bots/<%= bot.id %>/delete">Delete</option>
+                      <% } %>
+                      </select>
+                    </div> &nbsp;
+                    </div>
+              <% } %>
+              <% } %>
+              <% if (user) { %>
+              <% if (user && user.mod || user.admin && bot.approved == true) { %>                   
+              <div class="dropdown is-hoverable">
+                  <div class="select stafftool-select">
+                 <select onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                      <option disabled selected>Staff Tools</option>
+                      <option value="https://discordapp.com/oauth2/authorize?client_id=<%= bot.id %>&scope=bot&guild_id=374071874222686211">Main Invite</option>
+					  <option value="https://discordapp.com/oauth2/authorize?client_id=<%= bot.id %>&scope=bot&guild_id=374074135506190349">Staff Invite</option>
+                      <% if (bot.approved == false) { %>
+                      <option value="/bots/<%= bot.id %>/approve">Approve</option>
+                      <option value="/bots/<%= bot.id %>/remove">Deny</option>
+                      <% } else { %>
+                      <option value="/bots/<%= bot.id %>/remove">Remove</option>
+                      <% } %>
+                      <% if (user.admin) { %>
+                      <% if (bot.verified == false) { %>
+                      <option value="/bots/<%= bot.id %>/verify">Verify</option>
+                      <% } else { %>
+                      <option value="/bots/<%= bot.id %>/unverify">Unverify</option>
+                      <% } %>
+                      <% } %>
+                      </select>
+                      </div> &nbsp;
+              
+              </div>
+              <% } %>
+              <% } %>
+               </div>
+            </div>
+         </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+<div class="container margin-top-20 has-text-white">
+  <%- desc %>
+</div>
+</section>
+<%- include('../../partials/footer.ejs') %>                    

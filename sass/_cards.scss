@@ -1,0 +1,116 @@
+@import 'globals';
+
+.card {
+  background-color: $darker;
+  height: 100%;
+
+  .bot-name {
+    color: $white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .author {
+    color: $grey;
+    font-size: 17px;
+  }
+
+  .description {
+    color: $white;
+    font-size: 15px;
+  }
+
+  .fix-footer {
+    bottom: 0;
+    overflow: hidden;
+  }
+}
+
+.box {
+  background-color: $darker;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 40px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
+
+  strong {
+    color: $white;
+  }
+}
+
+@keyframes card-appear {
+  from {
+    transform: translate(0, -60px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.botcard {
+  & {
+    border: 1px solid #0000004d;
+    text-align: center;
+    color: $white;
+    transition: transform 0.4s ease;
+    animation: card-appear 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    background-color: #32353a; /* I made some pretty cool stuff, make sure to check it out.. */
+  }
+
+  &:hover {
+    transform: translate(0, -4px);
+    box-shadow: 2px 2px 4px #1111112d;
+  }
+
+  > .avatar {
+    border-radius: 50%;
+    margin-top: 30px;
+    height: 128px;
+    width: 128px;
+  }
+
+  > .wrapper {
+    & {
+      padding: 30px;
+    }
+
+    >.name {
+      font-size: 20px;
+    }
+  
+    > .author {
+      color: $grey;
+      font-size: 17px;
+      margin: 10px 0;
+    }
+
+    > .description {
+      font-size: 15px;
+    }
+  }
+
+  > .options {
+    & {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid #0000004d;
+      text-align: center;
+    }
+
+    > a {
+      padding: 17px;
+      transition: background-color 0.2s ease;
+    }
+
+    > a:first-child {
+      border-right: 1px solid #0000004d;
+    }
+
+    > a:hover {
+      background-color: #00000009;
+    }
+  }
+}

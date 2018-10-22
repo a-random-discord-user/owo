@@ -1,0 +1,110 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+        <h1 class="title">
+          New Bot
+        </h1>
+        <h2 class="subtitle">
+          Submit a new bot to be added to the list.
+      </h2>
+    </div>
+  </div>
+</section>
+<div class="margin-top-20 container">
+    <form method="POST">
+        <div class="field">
+            <label class="label">Client ID</label>
+            <div class="control">
+                <input class="input-dark" maxlength="70" name="client_id" type="text" placeholder="488053883654897664" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Prefix</label>
+            <div class="control">
+                <input class="input-dark" name="prefix" maxlength="50" type="text" placeholder="?" required>
+            </div>
+        </div>  
+        <div class="field">
+                <label class="label">Bot Library</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="library" required>
+                            <option value="" disabled selected>Select One</option>
+                            <option value="discordcr">discordcr</option>
+                            <option value="Discord.Net">Discord.Net</option>
+                            <option value="DSharpPlus">DSharpPlus</option>
+                            <option value="Nostrum">Nostrum</option>
+                            <option value="DiscordGo">DiscordGo</option>
+                            <option value="Discord4J">Discord4J</option>
+                            <option value="Javacord">Javacord</option>
+                            <option value="JDA">JDA</option>
+                            <option value="discord.io">discord.io</option>
+                            <option value="discord.js">discord.js</option>
+                            <option value="Discordie">Discordie</option>
+                            <option value="Eris">Eris</option>
+                            <option value="Discordia">Discordia</option>
+                            <option value="RestCord">RestCord</option>
+                            <option value="Yasmin">Yasmin</option>
+                            <option value="disco">disco</option>
+                            <option value="discord.py">discord.py</option>
+                            <option value="discordrb">discordrb</option>
+                            <option value="discord-rs">discord-rs</option>
+                            <option value="serenity">serenity</option>
+                            <option value="SwiftDiscord">SwiftDiscord</option>
+                            <option value="Sword">Sword</option>
+                            <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div> 
+        <div class="field">
+                <label class="label">Bot Invite</label>
+                <div class="control">
+                    <input class="input-dark" maxlength="2000" name="invite" type="url">
+                </div>
+            </div> 
+            <div class="field">
+                    <label class="label">Additional Owner IDs (space-separated, up to 5)</label>
+                    <div class="control">
+                        <input class="input-dark" name="owners" maxlength="200" type="text" placeholder="423220263161692161 310081310335172608">
+                    </div>
+                </div>
+                <div class="field">
+                        <label class="label">Short Description</label>
+                        <div class="control">
+                            <input class="input-dark" name="short_desc" maxlength="200" type="text" required>
+                        </div>
+                </div>  
+                <div class="field">
+                        <label class="label">Long Description (Supports markdown)</label>
+                        <div class="control">
+                          <textarea class="textarea textarea-dark" name="long_desc" class="textarea" required></textarea>
+                        </div>
+                      </div>   
+                      <div class="field">
+                            <label class="label">GitHub URL</label>
+                            <div class="control">
+                                <input class="input-dark" maxlength="2000" name="github" type="url">
+                            </div>
+                        </div>  
+                        <div class="field">
+                                <label class="label">Support Server Invite</label>
+                                <div class="control">
+                                    <input class="input-dark" maxlength="2000" name="support" type="url">
+                                </div>
+                            </div> 
+                            <div class="field">
+                                    <label class="label">Notes to the approver <i>(How to use etc.)</i></label>
+                                    <div class="control">
+                                      <textarea name="notes" class="textarea textarea-dark"></textarea>
+                                    </div>
+                                  </div>                                 
+            <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link">Submit</button>
+            </div>
+            </div>
+    </form>
+</div>
+<%- include('../../partials/footer.ejs') %>

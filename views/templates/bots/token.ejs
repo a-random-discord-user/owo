@@ -1,0 +1,22 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Bot Token
+      </h1>
+      <h2 class="subtitle">
+        Get your bot token for the API.
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+    <div class="field">
+        <input class="input-dark" value="<%= bot.token %>" readonly>
+        <label class="label" for="token">Token</label>
+    </div>
+  </div>
+</section>
+<%- include('../../partials/footer.ejs') %>

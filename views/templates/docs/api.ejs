@@ -1,0 +1,42 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        API Documentation
+      </h1>
+      <h2 class="subtitle">
+        All information about the API.
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid has-text-white">
+        <div class="content">
+        <h1>API</h1>
+        <h4>Tokens</h4>
+        <p>Tokens are provided on a per-bot basis. View your bot's token by finding your bot and clicking the <code>token</code> button</p>
+        <ul>
+            <li>All requests use JSON.</li>
+            <li>Please send POST requests with <code>Content-Type: application/json</code> with valid JSON in the body.</li>
+            <li>When a token is required <i>(When token needed is shown)</i>, please add your token to your HTTP <code>Authorization</code> header.</li>
+            <li>Example: <code>Authorization: dd8c7533eabfa62174a549f7b11678962ec00f8727537</code></li>
+        </ul>
+        <br>
+       <b><h5>Base URL: <code>https://botsfordiscord.com/api</code></h5></b>
+       <h3><code>GET /bot/:id</code></h3>
+       <p>Obtain JSON encoded information about a specific bot.</p>
+       <h3><code>GET /user/:id</code></h3>
+       <p>Obtain JSON encoded information about a specific user.</p>
+       <h3><code>GET /bots/:id</code></h3>
+       <p>Obtain JSON encoded information about a users bots.</p>
+       <h3><code>POST /bot/:id</code> (Authorization Required!)</h3>
+       <p>Update your bot guild count.</p>
+       <b>JSON body Key Info</b>
+       <p>count	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The guild count for your bot<br>
+        server_count &nbsp;&nbsp; The guild count for your bot</p>
+    </div>
+  </div>
+</section>
+<%- include('../../partials/footer.ejs') %>

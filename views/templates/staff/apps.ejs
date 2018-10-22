@@ -1,0 +1,54 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Verification Applications
+      </h1>
+      <h2 class="subtitle">
+        Find the best bot to spice up your Discord server!
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+    <table class="table table is-fullwidth">
+        <thead>
+          <tr>
+            <th>Bot / Owner</th>
+            <th>Is the server count sent to API?</th>
+            <th>Is the bot online 24/7?</th>
+            <th>Is the bot original code and not forked?</th>
+            <th>What is the bots main feature?</th>
+            <th>Website or Github where the widget is located.</th>
+            <th>Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if (apps.length == 0) { %>
+            <tr>
+                <th>No bots awaiting verification.</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <% } else { %>
+            <%- apps.map(bot =>`<tr>
+                <th><a target="_blank" href="/bots/${bot.id}">${bot.botinfo.name}</a> / <a target="_blank" href="/user/${bot.user}">${bot.ownerInfo.username}</a></th>
+                <th>${bot.server_count}</th>
+                <th>${bot.online}</th>
+                <th>${bot.original_code}</th>
+                <th>${bot.features}</th>
+                <th>${bot.website}</th>
+                <th><a href="/bots/${bot.id}/verify">Verify</a> | <a href="/bots/${bot.id}/unverify">Deny</a> </th>
+            </tr>`) %>
+            <% } %>
+        </tbody>
+      </table>
+  </div>
+</section>
+<%- include('../../partials/footer.ejs') %>

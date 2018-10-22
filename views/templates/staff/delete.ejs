@@ -1,0 +1,23 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Delete User
+      </h1>
+      <h2 class="subtitle">
+       Are you sure you want to delete <b><%= user.tag %></b>'s account?
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+      <center>
+          <form method="POST">
+        <button type="submit" class="button is-success">Yes</button>
+        </form>
+        </center>
+  </div>
+</section>
+<%- include('../../partials/footer.ejs') %>

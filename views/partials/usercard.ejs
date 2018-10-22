@@ -1,0 +1,32 @@
+<div class="column is-half">
+        <div class="box">
+           <article class="media">
+              <div class="media-left">
+                <img class="img-circle-users" src="https://cdn.discordapp.com/avatars/<%= users.id %>/<%= users.avatar %>.png" onerror="this.onerror=null;this.src='https://cdn.discordapp.com/embed/avatars/0.png';">
+              </div>
+              <div class="media-content">
+                 <div class="content">
+                    <p>
+                       <strong><%= users.tag %> &nbsp;<% if (users.isMod == true|| users.isAdmin == true) { %><img style="width: 30px; height: 30px;" src="/img/staff.png" title="Staff Member"> <% } %> <% if (users.isVerifiedDev == true) { %> <img style="width: 30px; height: 30px" src="/img/verified.png" title="Verified Developer"> <% } %></p></strong>
+                    </p>
+                 </div>
+                 <nav class="level is-mobile">
+                    <div class="field is-grouped is-grouped-multiline">
+                       <p class="control">
+                          <a class="button is-danger" href="/staff/admin/<%= users.id %>/delete">Delete</a>
+                       </p>
+                       <div class="select">
+                                <select onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+                                  <option disabled selected>Assign Rank</option>
+                                  <option value="/staff/admin/rank/<%= users.id %>/User">User</option>
+                                  <option value="/staff/admin/rank/<%= users.id %>/Verified Dev">Verified Dev</option>
+                                  <option value="/staff/admin/rank/<%= users.id %>/Mod">Moderator</option>
+                                  <option value="/staff/admin/rank/<%= users.id %>/Admin">Admin</option>
+                                </select>
+                          </div>
+                    </div>
+                 </nav>
+              </div>
+           </article>
+        </div>
+</div>

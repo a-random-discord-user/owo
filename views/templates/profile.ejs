@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-2"><img class="img-circle" src="https://cdn.discordapp.com/avatars/<%= userInfo.id %>/<%= userInfo.avatar %>?size=256"
+            alt="The image failed to load." onerror="this.onerror=null;this.src=&quot;https://cdn.discordapp.com/embed/avatars/0.png&quot;;"></div>
+        <div class="column is-10">
+          <p class="title">
+            <%= userInfo.tag %>
+			 <% if (userInfo.isAdmin == true) { %>
+            <img style="width: 40px; height: 40px" src="/img/owner.png" title="Director">
+            <% } %>
+            <% if (userInfo.isMod == true|| userInfo.isAdmin == true) { %>
+            <img style="width: 40px; height: 40px" src="/img/staff.png" title="Website Moderator">
+            <% } %>
+            <% if (userInfo.isVerifiedDev == true) { %>
+            <img style="width: 40px; height: 40px" src="/img/verified.png" title="Verified Developer">
+            <% } %>
+          </p>
+          <p class="subtitle">
+            <%= userInfo.bio || "This user has not set a bio. "%>
+          </p>
+          <div class="field is-grouped is-grouped-multiline">
+            <% if (user) { %>
+            <% if (user.mod || user.admin || user.id == userInfo.id) { %>
+            <!-- <a href="/user/<%= userInfo.id %>/edit" class="button is-danger">Edit Profile</a> -->
+            <% } %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+    <h3 class="title is-3">User Bots</h3>
+    <br>
+    <div class="_bot-list columns is-multiline is-mobile">
+      <% if (botsData.length == 0) { %>
+      <h3 class="title is-3">No bots available to list.</h3>
+      <% } else { %>
+      <%- botChunk.map(chunk => `${chunk.map(bot => include("../partials/botcard.ejs", {bot, resubmit: false})).join("")}`).join("") %>
+      <% } %>
+    </div>
+  </div>
+</div>
+<% if (user && userInfo.id == user.id) { %>
+<% if (storedBotsData.length > 0) { %>
+<br>
+<h3 class="title is-3">Stored Bots</h3>
+<br>
+<div class="_bot-list columns is-multiline is-mobile">
+  <%- storedChunk.map(chunk => `${chunk.map(bot => include("../partials/botcard.ejs", {bot, resubmit: true})).join("")}`).join("") %>
+</div>
+</div>
+<% } %>
+<% } %>
+<%- include('../partials/footer.ejs') %>

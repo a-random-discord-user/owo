@@ -1,0 +1,26 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+        <h1 class="title">
+          Unverify Bot
+        </h1>
+        <h2 class="subtitle">
+          Why are you unverifying this bot?
+      </h2>
+    </div>
+  </div>
+</section>
+<div class="margin-top-20 container">
+    <p class="title is-4">Please input a reason to why you are unverifying the bot.</p>
+    <form method="POST">
+      <div class="field">
+            <label class="label">Extra Information <i>(Evidence ETC)</i></label>
+            <div class="control">
+              <textarea class="textarea" name="reason" required></textarea>
+            </div>
+          </div>
+          <button class="button is-danger">Remove</button>
+  </form>
+</div>
+<%- include('../../partials/footer.ejs') %>

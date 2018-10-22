@@ -1,0 +1,26 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+       User Manager
+      </h1>
+      <h2 class="subtitle">
+        Update a users rank.
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+    <br>
+    <div class="columns is-multiline is-mobile">
+      <% if (usersData.length == 0) { %>
+      <h3 class="title is-3">No users available to list.</h3>
+      <% } else { %>
+      <%- userChunk.map(chunk => `${chunk.map(users => include("../../partials/usercard.ejs", {users})).join("")}`).join("") %>
+      <% } %>
+    </div>
+  </div>
+</section>
+<%- include('../../partials/footer.ejs') %>

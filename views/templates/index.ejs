@@ -1,0 +1,209 @@
+<%- include('../partials/header.ejs') %>
+<!-- Logo hide/show singularity (for this page only) -->
+<style>
+  nav.navbar > .container > .navbar-brand > a.navbar-item._brand {
+      display: none;
+  }
+
+  nav.navbar.mini > .container > .navbar-brand > a.navbar-item._brand {
+    display: flex;
+  }
+
+  section.hero.is-info.is-medium {
+    animation: intro 1s;
+    transition: all 0.2s ease;
+    margin-top: 52px; /* 52px = navbar height */
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container {
+    display: flex;
+  }
+
+  section.hero.is-info.is-medium > .hero-body {
+    opacity: 0;
+    animation: after-intro 1.4s 0.45s;
+    animation-fill-mode: forwards;
+    padding-top: 6.7rem;
+    padding-bottom: 6.7rem;
+  }
+
+  @keyframes ghost-reveal-heart {
+    /* jacob u there?  ok so let's make a view called footer but idk how since I dont work with ejs (a partial view?) just like a header but footer*/
+    /* do u see the footer.ejs? oh yes I see lol
+    /* ASSETS: just do https://botsfordiscord.com/img/image.png and it'll get it. link me the url for live site o i need to star tit up.*/
+  }
+
+  @keyframes after-intro {
+    from {
+      transform: translate(0, -20px);
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intro {
+    from {
+      transform: translate(0, -300px);
+    }
+  }
+
+  @keyframes float {
+    to {
+      transform: translate(0, -5px);
+    }
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > .reveal > img._logo {
+    width: 100px;
+    height: 100px !important;
+    align-self: left;
+    margin-right: 13px;
+    transition: transform 0.3s ease;
+    animation: float 2.5s infinite alternate;
+    z-index: 2;
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > .reveal:hover > img._logo {
+    animation: none;
+    transform: rotate(10deg);
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > ._subcontainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 20px;
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > ._subcontainer > .wumpus {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+<<<<<<< Updated upstream
+=======
+
+  section.hero.is-info.is-medium > .hero-body > .container > ._subcontainer > .wumpus > img.top-hat-wumpus {
+    height: 150px;
+  }
+
+  ._bot-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, 350px);
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+    max-width: 800;
+  }
+>>>>>>> Stashed changes
+
+  section.hero.is-info.is-medium > .hero-body > .container > .reveal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > .reveal > img._heart {
+    opacity: 0;
+    z-index: 1;
+    height: 70px;
+    width: 70px;
+    transform: rotate(-10deg);
+    transition: opacity 0.5s ease;
+    /* animation: float 2.8s infinite alternate;
+    animation-delay: 1s; */
+  }
+
+  section.hero.is-info.is-medium > .hero-body > .container > .reveal:hover > img._heart {
+    transform: rotate(-10deg);
+    opacity: 1;
+  }
+
+
+  /* Responsive botcards (from 4 columns -> 1) */
+  @media all and (min-width: 1087px) {
+    /*
+      TODO: container -100px transform
+    */
+  }
+
+  @media all and (max-width: 790px) {
+    section.hero.is-info.is-medium > .hero-body > .container > ._subcontainer > .wumpus {
+      display: none;
+    }
+
+    section.hero.is-info.is-medium > .hero-body > .container > ._subcontainer > .wumpus > img.top-hat-wumpus {
+      display: none;
+    }
+  }
+</style>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <div class="reveal">
+          <img src="/img/bfdHeart.png" class="_heart" />
+          <img src="/img/bfd128.png" class="_logo" />
+      </div>
+      <div class="_subcontainer">
+          <div class="welcome">
+              <h1 class="title">
+                  Bots For Discord
+              </h1>
+              <h2 class="subtitle">
+                Find the best bot to spice up your Discord server!
+              </h2>
+          </div>
+          <div class="wumpus">
+            <!-- TODO: local copy -->
+            <img class="top-hat-wumpus" src="https://image.ibb.co/c0wGe9/wumpus.png"/>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container is-fluid">
+    <br>
+    <div class="_bot-list columns is-multiline is-mobile">
+      <% if (botsData.length == 0) { %>
+      <h3 class="title is-3">No bots available to list.</h3>
+      <% } else { %>
+      <%- botChunk.map(chunk => `${chunk.map(bot => include("../partials/botcard.ejs", {bot, resubmit: false})).join("")}`).join("") %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Make the logo disappear/appear on scroll -->
+<script>
+    const body = document.querySelector("body");
+    const html = document.querySelector("html");
+    const nav = document.querySelector("nav.navbar");
+  
+    body.onscroll = (e) => {
+      // 176.5 comes from the height of the HERO's height / 2 (so it triggers at the center)
+      if (html.scrollTop >= 176.5) {
+        const classes = nav.className.split(" ");
+  
+        if (classes.indexOf("mini") === -1) {
+          classes.push("mini");
+          nav.className = classes.join(" ");
+        }
+      }
+      else {
+        const classes = nav.className.split(" ");
+  
+        if (classes.indexOf("mini") > -1) {
+          classes.splice(classes.indexOf("mini"), 1);
+          nav.className = classes.join(" ");
+        }
+      }
+    }; /// finally
+  </script>
+<%- include('../partials/footer.ejs') %>

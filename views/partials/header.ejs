@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <title><%= title || "Page" %> - A FUCKING BOT LIST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/img/favicon.gif" rel="shortcut-icon" />
+  <link href="/img/favicon.gif" rel="icon" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <!-- it's ok to move jquery to here -->
+  <!-- This style is temporary here -->
+  <style>
+    @keyframes logo-jump {
+      to {
+        transform: translate(0, -15px);
+      }
+    }
+
+    nav.navbar {
+      border-bottom: 1px solid #5f72b5;
+    }
+
+    nav.navbar.mini {
+      opacity: 0.95;
+      transition: opacity 0.2s ease;
+    }
+
+    nav.navbar.mini:hover {
+      opacity: 1;
+    }
+  </style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+</script>
+<body>
+<nav class="navbar is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand">
+    <a class="_brand navbar-item" href="/"><img class="__logo" src="/img/bfd48.png"> &nbsp; Bots For Discord</a>
+    <div class="navbar-burger burger" data-target="navbarmobile">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div> 
+  <div id="navbarmobile" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/">Home</a>
+      <a class="navbar-item" href="/docs">Docs</a>
+      <a class="navbar-item" href="https://discord.gg/KhyMcdj">Discord</a>
+      <a class="navbar-item" href="bots/verification">Verification</a>
+      <% if (user) { %>
+      <a class="navbar-item" href="/bots/add">Add Bot</a>
+      <a class="navbar-item" href="/bots/verification">Verification</a>
+      <% if (user.mod || user.admin) { %>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Staff</a>
+        <div class="navbar-dropdown">
+          <a href="/staff/queue" class="navbar-item">Queue</a>
+          <% if (user.admin) { %>
+            <a class="navbar-item" href="/staff/admin/verification">Verification</a>
+            <a class="navbar-item" href="/staff/admin/users">Users</a>
+          <% } %>
+        </div>
+    </div>
+    <% } %>
+    <% } %>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item"></div>
+            <% if (!user) { %>
+                <a href="/auth" class="navbar-item">Login</a>
+            <% } else { %>
+              <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link"><%= user.username + "#" + user.discriminator %></a>
+                  <div class="navbar-dropdown">
+                    <a href="/user/<%= user.id %>" class="navbar-item">Profile</a>
+                    <hr class="navbar-divider">
+                      <a class="navbar-item" href="/auth/logout">Logout</a>
+                  </div>
+              </div>
+            <% } %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

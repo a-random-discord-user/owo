@@ -1,0 +1,27 @@
+<div class="botcard">
+    <img class="avatar" src="https://cdn.discordapp.com/avatars/<%= bot.id %>/<%= bot.avatar %>.png" />
+    <div class="wrapper">
+        <div class="name">
+            <%= bot.name %> <% if (bot.verified == true) { %><img style="width: 25px; height: 25px;" src="/img/verified.png" title="Verified Bot"><% } %>
+        </div>
+        <div class="author">
+                <% bot.ownerinfo.forEach(owner => { 
+                    if (owner) { %>
+                    <% if (owner.id == bot.owner) { %>
+                        Author: <%= owner.tag %>
+                <% }}}) %>
+        </div>
+        <div class="desc">
+            <%= bot.short_desc %>
+        </div>
+    </div>
+    <div class="options">
+        <% if (resubmit == true) { %>
+            <a href="/bots/resubmit/<%= bot.id %>">Resubmit</a>
+            <a href="/bots/resubmit/<%= bot.id %>/delete">Delete</a>
+        <% } else { %>
+            <a target="_blank" href="<%= bot.invite %>">Invite</a>
+            <a href="/bots/<%= bot.id %>">View Page</a>
+        <% } %>
+    </div>
+</div>

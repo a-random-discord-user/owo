@@ -1,0 +1,30 @@
+{
+  "token": " APPLICATION TOKEN",
+  "prefix": "%",
+  "guildID": "SERVER GUILD ID GOES HERE",
+  "clientID": "x",
+  "clientSecret": "x",
+  "callbackURL": "CALL BACK LINK GOES HERE",
+  "secret": "",
+  "rethink": {
+    "host": "127.0.0.1",
+    "port": 28015,
+    "db": " database "
+   },
+  "useragent": "AFUCKINGBOTLIST",
+  "channels": {
+    "weblog": " WEB LOG CHANNEL GOES HERE",
+    "verification_log": "VERIFICATION LOG GOES HERE"
+  },
+  "roles": {
+    "staff": " STAFF ROLE ID",
+    "admins": " ADMIN ROLE ID ",
+    "bot": " BOT ROLE ID",
+    "bot_developer": "BOT DEVELOPER ID",
+    "verified_developer": " VERIFIED DEVELOPER ID",
+    "verified_bot": " VERIFIED BOT ID"
+  },
+  "emojis": {
+    "verified": " VERIFIED EMOJI ID WITHOUT THE <>"
+  }
+}

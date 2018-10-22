@@ -1,0 +1,62 @@
+<%- include('../../partials/header.ejs') %>
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+        <h1 class="title">
+          Remove Bot
+        </h1>
+        <h2 class="subtitle">
+          Why are you removing this bot?
+      </h2>
+    </div>
+  </div>
+</section>
+<div class="margin-top-20 container">
+    <p class="title is-4">Please select a valid reason to remove this bot.</p>
+    <form method="POST">
+      <div class="field">
+            <label class="label">Reason</label>
+            <div class="control">
+              <div class="select">
+                <select style="width: 1500px" name="reason" required>
+                <option selected="" disabled="" value="">Select a removal reason</option>
+                <option>Other</option>
+                <option>Owner isn't in the server</option>
+                <option>Bot responds to other bots</option>
+                <option>Bot responds to itself</option>
+                <option>Bot got involved in a feedback loop</option>
+                <option>Messages on join</option>
+                <option>Sends random messages</option>
+                <option>Sends advertisments</option>
+                <option>Messages spam</option>
+                <option>Sends level up messages</option>
+                <option>There is no documentation to use the bot with</option>
+                <option>Does not respond</option>
+                <option>Clone of another bot</option>
+                <option>Offline for a prolonged period of time</option>
+                <option>Userbot</option>
+                <option>The owner is using the bot to communicate</option>
+                <option>Token got leaked</option>
+                <option>Has no prefix</option>
+                <option>Requires a code grant</option>
+                <option>Cannot be invited</option>
+                <option>Invite link does not invite the bot</option>
+                <option>NSFW messages outside of Discord NSFW channels</option>
+                <option>Invalid command messages</option>
+                <option>Against the Discord Developer API Terms of Service and/or the Discord Terms of Service</option>
+                <option>Reaches Discord ratelimits</option>
+                <option>Breaks the Terms of Service of other services it uses</option>
+                </select>
+              </div>
+            </div>
+          </div>
+      <div class="field">
+            <label class="label">Extra Information <i>(Evidence ETC)</i></label>
+            <div class="control">
+              <textarea class="textarea" name="extra" name="reason" required></textarea>
+            </div>
+          </div>
+          <button class="button is-danger">Remove</button>
+  </form>
+</div>
+<%- include('../../partials/footer.ejs') %>
